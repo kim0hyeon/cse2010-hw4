@@ -5,26 +5,38 @@ package cse2010.hw4;
  * Complete the code below.
  */
 
+import static java.lang.Math.pow;
+
 public class BinToDec {
 
     public static int binToDec(String number) {
         if (number.length() == 1) {
-            // Base case
-            return 0;
+            return Integer.parseInt(number);
+
         } else {
-            // Recursive case
-            return 0;
+            int first_number;
+
+            if (number.charAt(0) == '1')
+                first_number = (int)pow(2,number.length()-1);
+            else
+                first_number = 0;
+
+            number = number.substring(1);
+
+            return first_number + binToDec(number);
         }
     }
 
     // Tail-recursion
     public static int binToDecTR(String number, int result) {
         if (number.length()== 1) {
-            // Base case
-            return 0;
+            return result + Integer.parseInt(number);
         } else {
-            // Recursive case
-            return 0;
+            if (number.charAt(0) == '1')
+                result += (int)pow(2,number.length()-1);
+
+            number = number.substring(1);
+            return binToDecTR(number,result);
         }
     }
 

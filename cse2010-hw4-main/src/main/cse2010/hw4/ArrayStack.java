@@ -28,7 +28,9 @@ public class ArrayStack<T> implements Stack<T> {
 		if (isFull())
 			throw new FullStackException("Stack Overflow");
 
-		// Your code here
+		// top 과 cpapcity 를 1 증가시키고 obj를 top 자리에 넣는다.
+		top++;
+		elements[top] = obj;
 	}
 
 	@Override
@@ -36,10 +38,10 @@ public class ArrayStack<T> implements Stack<T> {
 		if (isEmpty()) {
 			throw new EmptyStackException("Stack Underflow");
 		}
-
-		// Your code here
-
-		return null;
+		// obj를 꺼내 저장하고 top과 capacity를 1 감소시킨다.
+		T object = elements[top];
+		top--;
+		return object;
 	}
 
 	@Override
@@ -47,15 +49,13 @@ public class ArrayStack<T> implements Stack<T> {
 		if (isEmpty()) {
 			throw new EmptyStackException("Stack Underflow");
 		}
-
-		// Your code here
-		return null;
+		// top 위치에 있는 T를 출력한다.
+		return elements[top];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// Your code here
-		return false;
+		return top == -1; // -1이라면 true가 출력될 것이고 아니라면 false가 출력될 것이다.
 	}
 
 	@Override
